@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import About from "./About";
 import ArticleList from "./ArticleList";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function HomePage() {
   // fetch data for posts
@@ -16,12 +17,12 @@ function HomePage() {
         setIsLoaded(true);
       });
   }, []);
-
+  const pageTitle = "Underreacted | Home";
   // set the document title
-  useEffect(() => {
-    document.title = "Underreacted | Home";
-  }, []);
-
+  useEffect((pageTitle) => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+  useDocumentTitle("Underreacted | Home");
   return (
     <>
       <About />
